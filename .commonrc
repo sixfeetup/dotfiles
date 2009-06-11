@@ -30,6 +30,9 @@ if [[ $UNAME == "Darwin" ]]; then
         # (this will overwrite the PATH everytime we open a shell)
         defaults write $HOME/.MacOSX/environment PATH -string $PATH
     fi
+
+    # add ports into the $MANPATH
+    export MANPATH=/opt/local/man:$MANPATH
 fi
 
 # processes
