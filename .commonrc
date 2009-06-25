@@ -38,9 +38,9 @@ fi
 # processes
 ###########
 # output more lines so that you can grep them
-#alias psa='ps axwww'
+alias psa='ps axwww'
 # grep through processes
-#alias psg='psa | grep -i'
+alias psg='psa | grep -i'
 
 # svn helpers
 #############
@@ -48,7 +48,7 @@ fi
 #alias svnpsi="svn propset svn:ignore -F IGNORE.txt ."
 
 # zope runs most QA/Staging instances...
-#alias zu='sudo -H -u zope'
+alias zu='sudo -H -u zope'
 
 # buildout...
 #############
@@ -63,20 +63,20 @@ alias mv='mv -i'
 # ls aliases
 ############
 # conditionally set up coloring on different OS types
-#if [ $UNAME = "FreeBSD" ] || [ $UNAME = "Darwin" ]; then
-#   alias ls="ls -GF"
-#elif [ $UNAME = "Linux" ]; then
-#   alias ls="ls --color=auto -GF"
-#elif [ $UNAME = 'SunOS' ]; then
-#   alias ls="ls --color=always -F"
-#fi
+if [ $UNAME = "FreeBSD" ] || [ $UNAME = "Darwin" ]; then
+   alias ls="ls -GF"
+elif [ $UNAME = "Linux" ]; then
+   alias ls="ls --color=auto -GF"
+elif [ $UNAME = 'SunOS' ]; then
+   alias ls="ls --color=always -F"
+fi
 
 # show me everything
-#alias ll='ls -al'
+alias ll='ls -al'
 # sort by size
-#alias lss='ll -Sr'
+alias lss='ll -Sr'
 # ll but human readable size
-#alias lsa='ll -H'
+alias lsa='ll -H'
 # show all dot files and dirs
 #alias lsd='ls -ld .*'
 
@@ -101,6 +101,10 @@ alias less='less -I'
 
 # Pretty LS_COLORS explanation: 
 # http://www.mjxg.com/index.py/geek/lscolors_and_ls_colors
+#
+# This is a good set of colors for a
+# dark background...
+#####################################
 #export LS_COLORS="no=00:fi=00:di=32:ln=36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=31:*.cmd=01;32:*.exe=01;32:*.com=01;32:*.btm=01;32:*.bat=01;32:*.sh=01;32:*.csh=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:"
 
 # if the virutalenv wrapper is available, then source it
