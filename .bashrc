@@ -22,6 +22,9 @@ source $HOME/.commonrc
 # to go to the beginning and end of the line
 #bind -m vi-insert "\C-a":beginning-of-line
 #bind -m vi-insert "\C-e":end-of-line
+# ^n cycle through the list of partial matches
+#bind -m vi-insert "\`":menu-complete
+
 
 # history settings
 export HISTFILE=$HOME/.bash_history

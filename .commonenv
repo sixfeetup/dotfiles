@@ -35,15 +35,3 @@ if [ $UNAME = "Darwin" ]; then
 
 fi
 
-# colors!!!
-###########
-
-# for FreeBSD
-# Pretty LSCOLORS explanation:
-# http://www.mjxg.com/index.py/geek/lscolors_and_ls_colors
-#export LSCOLORS="cxgxCxdxbxegedabagacdx"
-
-# set the ACK match color scheme
-#export ACK_COLOR_MATCH="red"
-
-#export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=32:ln=36:bn=32:se=39"

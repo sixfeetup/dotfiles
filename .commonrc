@@ -12,14 +12,19 @@ else
     alias vim=vi
 fi
 
+# shortcut for long descrip checking
+alias py_long_descrip="python2.4 setup.py --long-description"
+# use cat to show the file
+alias descrip_check="py_long_descrip > /tmp/package.rst && rst2html.py /tmp/package.rst /tmp/package.html && cat -n /tmp/package.rst"
+
 # some OS X specific stuff
+##########################
 if [[ $UNAME == "Darwin" ]]; then
     
     # set up a path in .profile for TextMate (zsh haterz)
     echo "export PATH=$PATH" > $HOME/.profile
 
     # Helpers to see if a python package's long descrip is proper...
-    alias py_long_descrip="python2.4 setup.py --long-description"
     alias descrip_check="py_long_descrip > /tmp/package.rst && rst2html.py /tmp/package.rst /tmp/package.html && mate /tmp/package.rst"
     # run the setup.py descrip through docutils, then open it with the default browser
     alias descrip_check_open="py_long_descrip | rst2html.py > /tmp/foo.html && open file:///tmp/foo.html"
@@ -99,15 +104,36 @@ alias less='less -I'
 # always show all versions of an executable
 #alias which="which -a"
 
+# colors!!!
+###########
+
+# for FreeBSD
+# Pretty LSCOLORS explanation:
+# http://www.mjxg.com/index.py/geek/lscolors_and_ls_colors
+#
+# This set works nicely for dark backgrounds...
+#
+#export LSCOLORS="cxgxCxdxbxegedabagacdx"
+
+# for linux
 # Pretty LS_COLORS explanation: 
 # http://www.mjxg.com/index.py/geek/lscolors_and_ls_colors
 #
-# This is a good set of colors for a
-# dark background...
-#####################################
+# This set works nicely for dark backgrounds...
+#
 #export LS_COLORS="no=00:fi=00:di=32:ln=36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=31:*.cmd=01;32:*.exe=01;32:*.com=01;32:*.btm=01;32:*.bat=01;32:*.sh=01;32:*.csh=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:"
+
+# set the ACK match color scheme
+#export ACK_COLOR_MATCH="red"
+
+# set the grep colors for matching, etc.
+#export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=32:ln=36:bn=32:se=39"
+
+# virtualenv setup
+##################
 
 # if the virutalenv wrapper is available, then source it
 if checkPath virtualenvwrapper_bashrc && [ -d $HOME/.virtualenvs ]; then
     source virtualenvwrapper_bashrc
 fi
+
