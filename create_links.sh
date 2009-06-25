@@ -30,26 +30,26 @@ dotfiles=(
 
 for dotfile in "${dotfiles[@]}"
     do
-        the_dotfile=$HOME/.dotfiles/$dotfile
+        the_dotfile="$HOME/.dotfiles/$dotfile"
         # subversion config is an exception
-        if [ $dotfile = 'config' ]; then
-            to_create=$HOME/.subversion/$dotfile
+        if [ "$dotfile" = 'config' ]; then
+            to_create="$HOME/.subversion/$dotfile"
         else
-            to_create=$HOME/$dotfile
+            to_create="$HOME/$dotfile"
         fi
-        if [ $remove = "unlink" ]; then
-            if [ -e $to_create ]; then
-                rm $to_create
+        if [ "$remove" = "unlink" ]; then
+            if [ -e "$to_create" ]; then
+                rm "$to_create"
                 echo "Unlinked $to_create"
             fi
         else
             # symlink the conf file
-            if [ ! -e $to_create ]; then
+            if [ ! -e "$to_create" ]; then
                 echo "linking $dotfile"
-                ln -s $the_dotfile $to_create
+                ln -s "$the_dotfile" "$to_create"
             fi
             # warn the user that an existing file is in the way
-            if [ ! -h $to_create -a -e $to_create ]; then
+            if [ ! -h "$to_create" -a -e "$to_create" ]; then
                 echo "Remove $to_create so that it can be linked"
             fi
         fi
@@ -65,10 +65,10 @@ touch_me=(
 )
 for to_touch in "${touch_me[@]}"
     do
-        if [ ! -e $to_touch ]; then
+        if [ ! -e "$to_touch" ]; then
             echo "touching $to_touch"
         fi
-        touch $HOME/$to_touch
+        touch "$HOME/$to_touch"
     done
 
 # create a $HOME/bin if it does not exist
@@ -78,3 +78,4 @@ if [[ ! -d "$HOME_BIN" ]] && [[ ! -a "$HOME_BIN" ]]; then
 elif [[ ! -d "$HOME_BIN" ]] && [[ -a "$HOME_BIN" ]]; then
     echo "something in the way of $HOME_BIN being created"
 fi
+
