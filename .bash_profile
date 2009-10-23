@@ -9,9 +9,12 @@ new_path=""
 expected_path=(
   "$HOME/bin/$MACHTYPE-$OSTYPE"
   "$HOME/bin"
+  /opt/python-build/python-2.4/bin
+  /opt/python/bin
   /opt/local/bin
   /opt/local/sbin
   /opt/local/lib/postgresql83/bin
+  /opt/local/lib/mysql5/bin
   /opt/python-macosx/python-2.4/bin
   /opt/local/Library/Frameworks/Python.framework/Versions/2.4/bin
   /sw/bin
@@ -19,6 +22,8 @@ expected_path=(
   /usr/local/bin
   /usr/local/sbin
   /usr/local/etc
+  /usr/bin/perlbin/vendor
+  /usr/bin/perlbin/core
   /sbin
   /etc
   /bin
