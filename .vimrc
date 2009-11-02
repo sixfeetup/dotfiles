@@ -57,7 +57,7 @@ function! Tabstyle_tabs()
   set tabstop=4
   set noexpandtab
 endfunction
- 
+
 function! Tabstyle_spaces()
   " Use 2 spaces
   set softtabstop=4
@@ -65,7 +65,7 @@ function! Tabstyle_spaces()
   set tabstop=4
   set expandtab
 endfunction
- 
+
 call Tabstyle_spaces()
 
 " -----------------------------------------------------------------
@@ -74,7 +74,7 @@ call Tabstyle_spaces()
 " find as you type
 set incsearch
 " highlight the terms
-set hlsearch
+"set hlsearch
 " make searches case-insensitive
 set ignorecase
 " unless they contain upper-case letters
@@ -204,11 +204,11 @@ map <leader><Enter> i<CR><ESC>
 
 " set up the invisible characters
 " -----------------------------------------------------------------
-set listchars=eol:¬,tab:»\ 
+"set listchars=eol:¬,tab:»\ 
 " show invisible characters by default
-set list
+"set list
 " toggle invisible characters
-noremap <leader>i :set list!<CR>
+noremap <silent> <leader>i :set list!<CR>
 
 " mapping for taglist
 nnoremap tt :TlistToggle<CR>
