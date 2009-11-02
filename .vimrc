@@ -19,6 +19,7 @@ set wildignore+=*.pyc,*.pyo,CVS,.svn,.git,*.mo,.DS_Store,*.pt.cache,*.Python,*.o
 " hide the backup and swap files
 set backupdir=~/.backup/vim,.,/tmp
 set directory=~/.backup/vim/swap,.,/tmp
+set backupskip=/tmp/*,/private/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
 
 " turn on syntax highlighting
 syntax on
