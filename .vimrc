@@ -5,13 +5,40 @@ set nomodeline
 " bugs and limitations.
 set nocompatible
 
+" Enhanced command menu ctrl + d to expand directories
+set wildmenu
+set wildignore+=*.pyc,*.pyo,CVS,.svn,.git,*.mo,.DS_Store,*.pt.cache,*.Python,*.o,*.lo,*.la,*~
+
+" set the mapleader key
+"let mapleader = ","
+"let g:mapleader = ","
+
+" set up jj as mode switch
+"map! jj <ESC>
+
+" hide the backup and swap files
+set backupdir=~/.backup/vim,.,/tmp
+set directory=~/.backup/vim/swap,.,/tmp
+
 " turn on syntax highlighting
 syntax on
-" Make it not as appaling on dark background
-highlight Comment ctermfg=Cyan term=NONE cterm=NONE
+
+" gui and terminal compatible color scheme
+set t_Co=256
+set background=dark
+
+" a 256 color enhanced version of ir_black
+colorscheme tir_black
+" my mods to the theme
+colorscheme tir_black_custom
+
+" highlight the cursor line
+set cursorline
 
 " turn on line numbers, aww yeah
 set number
+" shortcut to turn off line numbers
+map <silent> <leader>n :set number!<CR>
 
 " The first setting tells vim to use "autoindent" (that is, use the current
 " line's indent level to set the indent level of new lines). The second makes
@@ -20,29 +47,42 @@ set number
 "set autoindent
 "set smartindent
 
-" I prefer 4-space tabs to 8-space tabs. The first setting sets up 4-space
-" tabs, and the second tells vi to use 4 spaces when text is indented (auto or
-" with the manual indent adjustmenters.)
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set softtabstop=4
+" function to switch between tabs and spaces
+" taken from: http://github.com/twerth/dotfiles/blob/master/etc/vim/vimrc
+function! Tabstyle_tabs()
+  " Using 4 column tabs
+  set softtabstop=4
+  set shiftwidth=4
+  set tabstop=4
+  set noexpandtab
+endfunction
+ 
+function! Tabstyle_spaces()
+  " Use 2 spaces
+  set softtabstop=4
+  set shiftwidth=4
+  set tabstop=4
+  set expandtab
+endfunction
+ 
+call Tabstyle_spaces()
 
-" This setting will cause the cursor to very briefly jump to a 
-" brace/parenthese/bracket's "match" whenever you type a closing or 
-" opening brace/parenthese/bracket.
-"set showmatch
-
+" -----------------------------------------------------------------
+" Searching
+" -----------------------------------------------------------------
 " find as you type
-"set incsearch
-
+set incsearch
+" highlight the terms
+set hlsearch
 " make searches case-insensitive
 set ignorecase
 " unless they contain upper-case letters
 set smartcase
+" a toggle for search highlight
+map <silent> <leader>h :set hlsearch!<CR>
 
 " have fifty lines of command-line (etc) history:
-set history=50
+set history=1000
 
 " This setting ensures that each window contains a statusline that displays the
 " current cursor position.
@@ -51,11 +91,148 @@ set ruler
 " Display an incomplete command in the lower right corner of the Vim window
 set showcmd
 
+" Set a margin of lines when scrolling
+set so=4
+
 " have the mouse enabled all the time:
-"set mouse=a
+set mouse=a
 
 " By default, vim doesn't let the cursor stray beyond the defined text. This 
 " setting allows the cursor to freely roam anywhere it likes in command mode.
 " It feels weird at first but is quite useful.
 "set virtualedit=all
+
+" tell the bell to go beep itself!
+set visualbell t_vb=
+
+" --------------------------------------------
+" Settings trying to make vim like TextMate :)
+" --------------------------------------------
+
+" turn on filetype checking for plugins like pyflakes
+filetype on            " enables filetype detection
+filetype plugin indent on     " enables filetype specific plugins
+
+" NERDTree settings
+" -----------------------------------------------------------------
+" set project folder to x
+map <leader>x :NERDTreeToggle<CR>
+map <leader>b :NERDTreeFromBookmark 
+" files/dirs to ignore in NERDTree (mostly the same as my svn ignores)
+let NERDTreeIgnore=[
+    \'\~$',
+    \'\.pt.cache$',
+    \'\.Python$',
+    \'\.svn$',
+    \'\.git*$',
+    \'\.pyc$',
+    \'\.pyo$',
+    \'\.mo$',
+    \'\.o$',
+    \'\.lo$',
+    \'\.la$',
+    \'\..*.rej$',
+    \'\.rej$',
+    \'\.DS_Store$']
+" set the sort order to alphabetical
+let NERDTreeSortOrder=[]
+" when the root is changed, change Vim's working dir
+let NERDTreeChDirMode=2
+" -----------------------------------------------------------------
+
+" Fuzzy finder TextMate plugin
+" -----------------------------------------------------------------
+" max results, lot o' files in a buildout :)
+let g:fuzzy_ceiling=35000
+" show full paths
+let g:fuzzy_path_display = 'highlighted_path'
+" ignored files
+let g:fuzzy_ignore = "*.png;*.PNG;*.pyc;*.pyo;*.JPG;*.jpg;*.GIF;*.gif;.svn/**;.git/**;*.mo;.DS_Store"
+
+" shortcut for ack search
+map <leader>a :Ack
+
+" buffer explorer ctrl + tabbing and single click
+let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+
+" automatically use the wiki text for trac.sixfeetup.com when
+" using it's all text
+au BufNewFile,BufRead trac.sixfeetup.com.*.txt set syntax=wiki
+
+" markdown syntax
+augroup mkd
+ autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
+augroup END
+command! -complete=file -nargs=* MarkdownToHTML  call s:RunShellCommand('Markdown.pl %')
+command! -complete=file -nargs=* MarkdownToHTMLCopy  !Markdown.pl % | pbcopy
+
+" shell files
+au BufNewFile,BufRead .common* set filetype=sh
+
+" Zope and Plone files
+" -----------------------------------------------------------------
+" xml syntax for zcml files
+au BufNewFile,BufRead *.zcml set filetype=xml
+" css.dtml as css
+au BufNewFile,BufRead *.css.dtml set filetype=css
+" js.dtml as javascript
+au BufNewFile,BufRead *.js.dtml set filetype=javascript
+
+" fuzzy finder text mate mapping
+map <leader>t :FuzzyFinderTextMate<CR>
+
+" Make cursor move by visual lines instead of file lines (when wrapping)
+" This makes me feel more at home :)
+map <up> gk
+map k gk
+imap <up> <C-o>gk
+map <down> gj
+map j gj
+imap <down> <C-o>gj
+map E ge
+
+" Insert newlines with enter and shift + enter
+map <S-Enter> O<ESC>
+map <Enter> o<ESC>
+" open a new line from the current spot (sort of the opposite of J)
+map <leader><Enter> i<CR><ESC>
+
+" map ; to : so you don't have to use shift
+"map ; :
+
+" set up the invisible characters
+" -----------------------------------------------------------------
+set listchars=eol:¬,tab:»\ 
+" show invisible characters by default
+set list
+" toggle invisible characters
+noremap <leader>i :set list!<CR>
+
+" mapping for taglist
+nnoremap tt :TlistToggle<CR>
+
+" -----------------------------------------------------------------
+" GUI settings
+" -----------------------------------------------------------------
+if has("gui_running")
+
+    " Default size of window
+    set columns=145
+    set lines=45
+    
+    " automagically open NERDTree in a GUI
+    autocmd VimEnter * exe 'NERDTreeToggle' | wincmd l
+    " close the NERDTree when opening trac pages
+    autocmd VimEnter,BufNewFile,BufRead trac.sixfeetup.com.*.txt exe 'NERDTreeClose'
+    autocmd VimEnter,BufNewFile,BufRead trac.sixfeetup.com.*.txt set nonumber
+
+    " OS Specific
+    if has("gui_macvim")
+        "set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
+        set guifont=Monaco:h10
+        set guioptions-=T " remove toolbar
+    endif
+
+endif
 
