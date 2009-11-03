@@ -51,12 +51,18 @@ syntax on
 
 " gui and terminal compatible color scheme
 set t_Co=256
-set background=dark
 
+" a nicer default colorscheme for a light
+" background
+colorscheme simplewhite
+
+" Uncomment the following for a dark background terminal
+" also uncomment the colorschemes for a nice theme
+"set background=dark
 " a 256 color enhanced version of ir_black
-colorscheme tir_black
+"colorscheme tir_black
 " my mods to the theme
-colorscheme tir_black_custom
+"colorscheme tir_black_custom
 
 " highlight the cursor line
 set cursorline
