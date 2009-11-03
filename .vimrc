@@ -1,3 +1,28 @@
+" -----------------------------------------------------------------
+"
+" This is your vim configuration file. There are some shortcuts set
+" up for you by default.  Here are the highlights:
+"
+" The mapleader has been switched from '\' to ',' anytime you see
+" <leader> that is what this refers to.
+"
+"    <leader>t       -- opens the TextMate fuzzy finder
+"    tt              -- opens up the taglist 
+"    <leader>h       -- toggles the highlight search
+"    <leader>n       -- toggles the line numbers
+"    <leader>a       -- starts an ack search in the CWD
+"    <leader>i       -- toggles invisible characters
+"    <leader>x       -- toggles NERDTree drawer
+"    <leader>b       -- shortcut for getting to NERDTree bookmarks
+"    <leader><Enter> -- opens a line at the current column (this is
+"                       the reverse of J)
+"    jj              -- alternative to <ESC>
+"    ;               -- alternative to :
+"    ctrl + tab      -- cycle through buffers/tabs
+"    <Enter>         -- open a new line (non-insert)
+"    <S-Enter>       -- open a new line above (non-insert)
+"
+" -----------------------------------------------------------------
 " FreeBSD security advisory for this one...
 set nomodeline
 
@@ -10,11 +35,11 @@ set wildmenu
 set wildignore+=*.pyc,*.pyo,CVS,.svn,.git,*.mo,.DS_Store,*.pt.cache,*.Python,*.o,*.lo,*.la,*~
 
 " set the mapleader key
-"let mapleader = ","
-"let g:mapleader = ","
+let mapleader = ","
+let g:mapleader = ","
 
 " set up jj as mode switch
-"map! jj <ESC>
+map! jj <ESC>
 
 " hide the backup and swap files
 set backupdir=~/.backup/vim,.,/tmp
@@ -200,7 +225,7 @@ map <Enter> o<ESC>
 map <leader><Enter> i<CR><ESC>
 
 " map ; to : so you don't have to use shift
-"map ; :
+map ; :
 
 " set up the invisible characters
 " -----------------------------------------------------------------
