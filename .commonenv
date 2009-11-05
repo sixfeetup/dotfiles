@@ -17,6 +17,9 @@ else
     export EDITOR=vi
 fi
 
+# use a fancy terminal
+export TERM=xterm-256color
+
 # get crazy with python, and the cheese whiz
 #export PYTHONSTARTUP=$HOME/.pystartup
 
