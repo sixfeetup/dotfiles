@@ -17,7 +17,7 @@ elseif &term == "vt320"
 endif
 
 " Normal
-hi Normal		guifg=black			guibg=white			gui=none
+hi Normal		guifg=black			guibg=white			gui=none	ctermbg=white
 hi Normal		ctermfg=black		ctermbg=white		cterm=none
 hi NonText		guifg=#606060		guibg=#f0f0f0		gui=none
 hi NonText		ctermfg=lightgray	ctermbg=none	cterm=none
