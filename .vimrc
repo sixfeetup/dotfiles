@@ -21,10 +21,16 @@
 "    ctrl + tab      -- cycle through buffers/tabs
 "    <Enter>         -- open a new line (non-insert)
 "    <S-Enter>       -- open a new line above (non-insert)
+"    <leader>s       -- Toggle spell checking
+"    <F2>            -- Toggle smart indent on paste
 "
 " -----------------------------------------------------------------
+
 " FreeBSD security advisory for this one...
 set nomodeline
+
+" set the default encoding
+set enc=utf-8
 
 " This setting prevents vim from emulating the original vi's
 " bugs and limitations.
@@ -46,6 +52,13 @@ set backupdir=~/.backup/vim,.,/tmp
 set directory=~/.backup/vim/swap,.,/tmp
 set backupskip=/tmp/*,/private/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
 
+" turn on spell checking
+"set spell spelllang=en_us
+map <silent> <leader>s :set spell!<CR>
+
+" -----------------------------------------------------------------
+" Colors and Syntax
+" -----------------------------------------------------------------
 " turn on syntax highlighting
 syntax on
 
@@ -64,6 +77,20 @@ colorscheme simplewhite
 " my mods to the theme
 "colorscheme tir_black_custom
 
+" A function to toggle between light and dark colors
+function! ColorSwitch()
+  if &background == 'dark'
+      colorscheme simplewhite
+      return
+  endif
+
+  if &background == 'light'
+      colorscheme tir_black
+      colorscheme tir_black_custom
+      return
+  endif
+endfunction
+
 " highlight the cursor line
 set cursorline
 
@@ -78,6 +105,9 @@ map <silent> <leader>n :set number!<CR>
 " the previous line.
 "set autoindent
 "set smartindent
+
+" turn off smart indentation when pasting
+set pastetoggle=<F2>
 
 " function to switch between tabs and spaces
 " taken from: http://github.com/twerth/dotfiles/blob/master/etc/vim/vimrc
@@ -99,6 +129,11 @@ endfunction
 
 call Tabstyle_spaces()
 
+" This setting will cause the cursor to very briefly jump to a 
+" brace/parenthese/bracket's "match" whenever you type a closing or 
+" opening brace/parenthese/bracket.
+set showmatch
+
 " -----------------------------------------------------------------
 " Searching
 " -----------------------------------------------------------------
@@ -116,15 +151,20 @@ map <silent> <leader>h :set hlsearch!<CR>
 " have fifty lines of command-line (etc) history:
 set history=1000
 
-" This setting ensures that each window contains a statusline that displays the
-" current cursor position.
-set ruler
-
 " Display an incomplete command in the lower right corner of the Vim window
 set showcmd
 
 " Set a margin of lines when scrolling
 set so=4
+
+" This setting ensures that each window contains a statusline that displays the
+" current cursor position.
+set ruler
+
+" set a custom status line similar to that of ":set ruler"
+"set statusline=\ \ \ \ \ line:%l\ column:%c\ \ \ %M%Y%r%=%-14.(%t%)\ %p%%
+" show the statusline in all windows
+set laststatus=2
 
 " have the mouse enabled all the time:
 set mouse=a
@@ -210,6 +250,8 @@ au BufNewFile,BufRead *.zcml set filetype=xml
 au BufNewFile,BufRead *.css.dtml set filetype=css
 " js.dtml as javascript
 au BufNewFile,BufRead *.js.dtml set filetype=javascript
+" any txt file in a `tests` directory is a doctest
+au BufNewFile,BufRead /*/tests/*.txt set filetype=doctest
 
 " fuzzy finder text mate mapping
 map <leader>t :FuzzyFinderTextMate<CR>
@@ -241,6 +283,8 @@ map ; :
 " toggle invisible characters
 noremap <silent> <leader>i :set list!<CR>
 
+" make the taglist show on the right side
+let Tlist_Use_Right_Window = 1
 " mapping for taglist
 nnoremap tt :TlistToggle<CR>
 
