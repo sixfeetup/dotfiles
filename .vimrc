@@ -69,6 +69,7 @@ set t_Co=256
 " a nicer default colorscheme for a light
 " background
 colorscheme simplewhite
+colorscheme simplewhite_custom
 
 " Uncomment the following for a dark background terminal
 " also uncomment the colorschemes for a nice theme
