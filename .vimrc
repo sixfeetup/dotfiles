@@ -285,6 +285,8 @@ noremap <silent> <leader>i :set list!<CR>
 
 " make the taglist show on the right side
 let Tlist_Use_Right_Window = 1
+" only show the current buffer, fold the rest
+let Tlist_File_Fold_Auto_Close = 1
 " mapping for taglist
 nnoremap tt :TlistToggle<CR>
 
