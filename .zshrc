@@ -29,6 +29,7 @@ alias -g L='| less'
 alias -g M='| more'
 alias -g T='| tail'
 alias -g TT='| tail -n20'
+alias -g CD='| colordiff'
 
 # turn off the stupid bell
 #setopt NO_BEEP
