@@ -214,6 +214,7 @@ let NERDTreeIgnore=[
     \'\.la$',
     \'\..*.rej$',
     \'\.rej$',
+    \'\.\~lock.*#$',
     \'\.DS_Store$']
 " set the sort order to alphabetical
 let NERDTreeSortOrder=[]
