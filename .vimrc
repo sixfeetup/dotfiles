@@ -198,6 +198,7 @@ filetype plugin indent on     " enables filetype specific plugins
 " set project folder to x
 map <leader>x :NERDTreeToggle<CR>
 map <leader>b :NERDTreeFromBookmark 
+nnoremap <silent> <leader>f :call FindInNERDTree()<CR>
 " files/dirs to ignore in NERDTree (mostly the same as my svn ignores)
 let NERDTreeIgnore=[
     \'\~$',
