@@ -80,10 +80,14 @@ fi
 alias ll='ls -al'
 # sort by size
 alias lss='ll -Sr'
+# sort by date modified
+alias lsdate='lsa -tr'
 # ll but human readable size
 alias lsa='ll -H'
-# show all dot files and dirs
-#alias lsd='ls -ld .*'
+# don't list directories
+#alias lsd='lsa -d'
+# list all dot files
+#alias lsdot='lsd .*'
 
 # less
 ######
