@@ -10,7 +10,7 @@ source $HOME/.commonenv
 # given here are for all my accounts, some of which have unusual
 # paths in them.  rationalize-path will remove
 # nonexistent directories from an array.
-rationalize-path () {             
+rationalize-path () {
   # Note that this works only on arrays, not colon-delimited strings.
   # Not that this is a problem now that there is typeset -T.
   local element
@@ -53,7 +53,6 @@ path=(
   /usr/bin/perlbin/vendor
   /usr/bin/perlbin/core
   /sbin
-  /etc
   /bin
   /usr/bin
   /usr/sbin
@@ -71,6 +70,7 @@ path=(
   /usr/local/lib/zsh/scr
   /usr/local/games
   /usr/games
+  /etc
   "$path[@]"
 )
 
