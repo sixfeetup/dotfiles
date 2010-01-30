@@ -263,7 +263,7 @@ au BufNewFile,BufRead *.js.dtml set filetype=javascript
 au BufNewFile,BufRead /*/tests/*.txt set filetype=doctest
 
 " fuzzy finder text mate mapping
-map <leader>t :FuzzyFinderTextMate<CR>
+map <silent> <leader>t :FuzzyFinderTextMate<CR>
 
 " Make cursor move by visual lines instead of file lines (when wrapping)
 " This makes me feel more at home :)
