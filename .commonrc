@@ -61,6 +61,9 @@ alias zu='sudo -H -u zope'
 #alias bs='bin/control stop'
 #alias bbn='bin/buildout -v'
 
+# pep8 that can scan a `src` dir
+alias pep8scan="pep8 --repeat --show-source --statistics --exclude=paste"
+
 # make copy and move ask before replacing files
 alias cp='cp -i'
 alias mv='mv -i'
