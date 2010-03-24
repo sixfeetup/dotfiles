@@ -252,6 +252,9 @@ map <leader>a :Ack<Space>
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 
+" Delete buffers when i'm done with them in VCSCommand
+let VCSCommandDeleteOnHide = 1
+
 " automatically use the wiki text for trac.sixfeetup.com when
 " using it's all text
 au BufNewFile,BufRead trac.sixfeetup.com.*.txt set syntax=wiki
