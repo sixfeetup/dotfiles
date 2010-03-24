@@ -317,9 +317,10 @@ if has("gui_running")
     
     " automagically open NERDTree in a GUI
     autocmd VimEnter * exe 'NERDTreeToggle' | wincmd l
-    " close the NERDTree when opening trac pages
-    autocmd VimEnter,BufNewFile,BufRead trac.sixfeetup.com.*.txt exe 'NERDTreeClose'
-    autocmd VimEnter,BufNewFile,BufRead trac.sixfeetup.com.*.txt set nonumber
+    " close the NERDTree when opening it's all text and vimperator
+    " editors
+    autocmd VimEnter,BufNewFile,BufRead /*/itsalltext/* exe 'NERDTreeClose'
+    autocmd VimEnter,BufNewFile,BufRead /*/itsalltext/* set nospell
 
     " OS Specific
     if has("gui_macvim")
