@@ -30,6 +30,8 @@ alias -g M='| more'
 alias -g T='| tail'
 alias -g TT='| tail -n20'
 alias -g CD='| colordiff'
+# bootstrap with distribute
+#alias -g bootstrap='bootstrap.py --distribute'
 
 # turn off the stupid bell
 #setopt NO_BEEP
