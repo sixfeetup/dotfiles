@@ -214,6 +214,9 @@ set mouse=a
 " tell the bell to go beep itself!
 set visualbell t_vb=
 
+" allow for switching buffers when a file has changes
+set hidden
+
 " --------------------------------------------
 " Settings trying to make vim like TextMate :)
 " --------------------------------------------
