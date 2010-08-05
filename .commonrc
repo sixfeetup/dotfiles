@@ -140,8 +140,12 @@ alias less='less -I'
 ##################
 
 # if the virutalenv wrapper is available, then source it
-if checkPath virtualenvwrapper_bashrc && [ -d $HOME/.virtualenvs ]; then
-    source virtualenvwrapper_bashrc
+if [ -d $HOME/.virtualenvs ]; then
+    if checkPath virtualenvwrapper_bashrc; then
+        source virtualenvwrapper_bashrc
+    elif checkPath virtualenvwrapper.sh; then
+        source virtualenvwrapper.sh
+    fi
 fi
 
 # source a file that has some git config changes. One is the
