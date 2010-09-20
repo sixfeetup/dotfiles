@@ -55,7 +55,7 @@ set nocompatible
 
 " Enhanced command menu ctrl + d to expand directories
 set wildmenu
-set wildignore+=*.pyc,*.pyo,CVS,.svn,.git,*.mo,.DS_Store,*.pt.cache,*.Python,*.o,*.lo,*.la,*~
+set wildignore+=*.pyc,*.pyo,CVS,.svn,.git,*.mo,.DS_Store,*.pt.cache,*.Python,*.o,*.lo,*.la,*~,.AppleDouble
 
 " set the mapleader key
 let mapleader = ","
@@ -275,6 +275,7 @@ let NERDTreeIgnore=[
     \'\..*.rej$',
     \'\.rej$',
     \'\.\~lock.*#$',
+    \'\.AppleDouble$',
     \'\.DS_Store$']
 " set the sort order to alphabetical
 let NERDTreeSortOrder=[]
@@ -289,7 +290,7 @@ let g:fuzzy_ceiling=35000
 " show full paths
 let g:fuzzy_path_display = 'highlighted_path'
 " ignored files
-let g:fuzzy_ignore = "*.png;*.PNG;*.pyc;*.pyo;*.JPG;*.jpg;*.GIF;*.gif;.svn/**;.git/**;*.mo;.DS_Store"
+let g:fuzzy_ignore = "*.png;*.PNG;*.pyc;*.pyo;*.JPG;*.jpg;*.GIF;*.gif;.svn/**;.git/**;*.mo;.DS_Store;.AppleDouble"
 
 " shortcut for ack search
 map <leader>a :Ack<Space>
