@@ -154,6 +154,31 @@ endfunction
 
 call Tabstyle_spaces()
 
+" function to run shell commands and create a scratch buffer (modified
+" slightly so that it doesn't show the command and it's interpretation)
+" http://vim.wikia.com/wiki/Display_output_of_shell_commands_in_new_window
+" Example, show output of ls in a scratch buffer:
+"
+" :Shell ls -al
+"
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+function! s:RunShellCommand(cmdline)
+  echo a:cmdline
+  let expanded_cmdline = a:cmdline
+  for part in split(a:cmdline, ' ')
+     if part[0] =~ '\v[%#<]'
+        let expanded_part = '"'.fnameescape(expand(part)).'"'
+        let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+     endif
+  endfor
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  call setline(1,substitute(getline(1),'.','=','g'))
+  execute '$read !'. expanded_cmdline
+  setlocal nomodifiable
+  1
+endfunction
+
 " A function to strip trailing whitespace and clean up afterwards so
 " that the search history remains intact and cursor does not move.
 " Taken from: http://vimcasts.org/episodes/tidying-whitespace
@@ -280,9 +305,14 @@ let VCSCommandDeleteOnHide = 1
 " using it's all text
 au BufNewFile,BufRead trac.sixfeetup.com.*.txt set syntax=wiki
 
-" run markdown on the current file
-command! -complete=file -nargs=* MarkdownToHTML  call s:RunShellCommand('Markdown.pl %')
-command! -complete=file -nargs=* MarkdownToHTMLCopy  !Markdown.pl % | pbcopy
+" run markdown on the current file and place the html in a scratch buffer
+command! -nargs=0 MarkdownToHTML  call s:RunShellCommand('Markdown.pl %')
+" replace the current buffer with the html version of the markdown
+command! -nargs=0 MarkdownToHTMLReplace  %!Markdown.pl "%"
+" copy the html version of the markdown to the clipboard (os x)
+command! -nargs=0 MarkdownToHTMLCopy  !Markdown.pl "%" | pbcopy
+" use pandoc to convert from html into markdown
+command! -nargs=0 MarkdownFromHTML  %!pandoc -f html -t markdown "%"
 
 " xml tidy
 command! -complete=file -nargs=* TidyXML %!tidy -xml -i -q -w 0
