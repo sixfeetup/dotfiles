@@ -360,6 +360,9 @@ nnoremap tt :TlistToggle<CR>
 " -----------------------------------------------------------------
 if has("gui_running")
 
+    " turn off the cursor blinking (who thinks that is a good idea?)
+    "set guicursor+=a:blinkon0
+
     " Default size of window
     set columns=145
     set lines=45
