@@ -139,8 +139,10 @@ alias less='less -I'
 # virtualenv setup
 ##################
 
+VIRTUALENVS_DIR=$HOME/.virtualenvs
 # if the virutalenv wrapper is available, then source it
-if [ -d $HOME/.virtualenvs ]; then
+if [ -d $VIRTUALENVS_DIR ]; then
+    export WORKON_HOME=$VIRTUALENVS_DIR
     if checkPath virtualenvwrapper_bashrc; then
         source virtualenvwrapper_bashrc
     elif checkPath virtualenvwrapper.sh; then
