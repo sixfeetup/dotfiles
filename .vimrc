@@ -291,6 +291,9 @@ set visualbell t_vb=
 " allow for switching buffers when a file has changes
 set hidden
 
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
 " --------------------------------------------
 " Settings trying to make vim like TextMate :)
 " --------------------------------------------
