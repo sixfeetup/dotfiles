@@ -446,6 +446,11 @@ let tlist_cfg_settings = 'ini;s:section'
 " mapping for taglist
 nnoremap tt :TlistToggle<CR>
 
+" lodgeit settings
+let g:lodgeit_url = "https://paste.sixfeetup.com"
+let g:lodgeit_username = ""
+let g:lodgeit_secure = 1
+
 " -----------------------------------------------------------------
 " GUI settings
 " -----------------------------------------------------------------
