@@ -419,8 +419,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" map ; to : so you don't have to use shift
-map ; :
+" map ; to : so you don't have to use shift (overrides a default vim command)
+"map ; :
 
 " set up the invisible characters
 " -----------------------------------------------------------------
