@@ -55,6 +55,8 @@ set nocompatible
 
 " Enhanced command menu ctrl + d to expand directories
 set wildmenu
+" list completions, then cycle through them
+set wildmode=list:longest,full
 set wildignore+=*.pyc,*.pyo,CVS,.svn,.git,*.mo,.DS_Store,*.pt.cache,*.Python,*.o,*.lo,*.la,*~,.AppleDouble
 
 " set the mapleader key
