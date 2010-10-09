@@ -60,6 +60,11 @@ set enc=utf-8
 " bugs and limitations.
 set nocompatible
 
+" Set up pathogen
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " Enhanced command menu ctrl + d to expand directories
 set wildmenu
 " list completions, then cycle through them
