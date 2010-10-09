@@ -413,6 +413,12 @@ map <Enter> o<ESC>
 " open a new line from the current spot (sort of the opposite of J)
 map <leader><Enter> i<CR><ESC>
 
+" Mapping window commands directly
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " map ; to : so you don't have to use shift
 map ; :
 
