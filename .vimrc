@@ -85,36 +85,64 @@ let python_highlight_all=1
 " gui and terminal compatible color scheme
 set t_Co=256
 
-" a nicer default colorscheme for a light
-" background
-colorscheme simplewhite
-colorscheme simplewhite_custom
+" set global variables that will define the colorscheme
+let g:light_theme='mac_classic'
+let g:dark_theme='molokai'
 
-" Uncomment the following for a dark background terminal
-" also uncomment the colorschemes for a nice theme
-"set background=dark
-" a 256 color enhanced version of ir_black
-"colorscheme tir_black
-" my mods to the theme
-"colorscheme tir_black_custom
+" Use the "original" molokai theme colors instead of "dark"
+let g:molokai_original=1
+
+" Command to call the ColorSwitch funciton
+command! -nargs=? -complete=customlist,s:completeColorSchemes ColorSwitcher :call s:colorSwitch(<q-args>)
 
 " A function to toggle between light and dark colors
-function! ColorSwitch()
-    " check for the theme, and switch to the other one.
-    " I had this working with &background == 'dark/light' but something
-    " stopped working for me :()
-    if g:colors_name == 'tir_black'
-        colorscheme simplewhite
-        colorscheme simplewhite_custom
-    elseif g:colors_name == 'simplewhite'
-        colorscheme tir_black
-        colorscheme tir_black_custom
+function! s:colorSwitch(...)
+    " function to switch colorscheme
+    function! ChangeMe(theme)
+        execute('colorscheme '.a:theme)
+        try
+            execute('colorscheme '.a:theme.'_custom')
+        catch /E185:/
+            " There was no '_custom' scheme...
+        endtry
+    endfunction
+
+    " Change to the specified theme
+    if eval('a:1') != ""
+        " check to see if we are passing in an existing var
+        if exists(a:1)
+            call ChangeMe(eval(a:1))
+        else
+            call ChangeMe(a:1)
+        endif
         return
+    endif
+
+    " Toggle between a light and dark vim colorscheme
+    if &background == 'dark'
+        call ChangeMe(g:light_theme)
+    elseif &background == 'light'
+        call ChangeMe(g:dark_theme)
     endif
 endfunction
 
+" completion function for colorscheme names
+function! s:completeColorSchemes(A,L,P)
+    let colorscheme_names = []
+    for i in split(globpath(&runtimepath, "colors/*.vim"), "\n")
+        let colorscheme_name = fnamemodify(i, ":t:r")
+        if stridx(colorscheme_name, "_custom") < 0
+            call add(colorscheme_names, colorscheme_name)
+        endif
+    endfor
+    return filter(colorscheme_names, 'v:val =~ "^' . a:A . '"')
+endfunction
+
+" set the colorscheme
+ColorSwitcher g:dark_theme
+
 " switch between light and dark colors
-map <silent> <leader>c :call ColorSwitch()<CR>
+map <silent> <leader>c :ColorSwitcher<CR>
 
 " highlight the cursor line
 set cursorline
