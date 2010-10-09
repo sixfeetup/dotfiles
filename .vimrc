@@ -167,6 +167,10 @@ map <silent> <leader>n :set number!<CR>
 "set autoindent
 "set smartindent
 
+" Allow command line editing like emacs
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+
 " turn off smart indentation when pasting
 set pastetoggle=<F2>
 
