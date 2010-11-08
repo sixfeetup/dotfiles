@@ -89,7 +89,10 @@ export TERM=xterm-256color
 #export PYTHONSTARTUP=$HOME/.pystartup
 
 # prefer to use distribute for virtualenvs
-#export VIRTUALENV_USE_DISTRIBUTE="TRUE"
+export VIRTUALENV_USE_DISTRIBUTE="TRUE"
+
+# add our public repo to the pip find links
+export PIP_FIND_LINKS="http://dist.sixfeetup.com/public/"
 
 # set up some more OS X specific stuff
 if [ $UNAME = "Darwin" ]; then
