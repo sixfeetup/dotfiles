@@ -60,6 +60,8 @@ alias zu='sudo -H -u zope'
 #alias bfg='bin/control fg'
 #alias bs='bin/control stop'
 #alias bbn='bin/buildout -v'
+# creating the buildout.cfg
+alias bcl='cp profiles/buildout.cfg.tmpl buildout.cfg && sed -I "" -e "s/#\(    profiles\/local\.cfg\)/\1/" buildout.cfg'
 
 # pep8 that can scan a `src` dir
 alias pep8scan="pep8 --repeat --show-source --statistics --exclude=paste"
