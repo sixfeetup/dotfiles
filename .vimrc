@@ -6,7 +6,7 @@
 " The mapleader has been switched from '\' to ',' anytime you see
 " <leader> that is what this refers to.
 "
-"    <leader>t       -- opens the TextMate fuzzy finder
+"    <leader>t       -- opens the fuzzy finder coverage mode
 "    tt              -- opens up the taglist 
 "    <leader>h       -- toggles the highlight search
 "    <leader>n       -- toggles the line numbers
@@ -393,8 +393,10 @@ au BufNewFile,BufRead *.js.dtml set filetype=javascript
 " any txt file in a `tests` directory is a doctest
 au BufNewFile,BufRead /*/tests/*.txt set filetype=doctest
 
-" fuzzy finder text mate mapping
-map <silent> <leader>t :FuzzyFinderTextMate<CR>
+" FuzzyFinder coverage file mode (like textmate file finder)
+map <leader>t :FufCoverageFile<Space>
+" Search for a tag with fuzzyFinder
+nmap <leader>ft :FufTag<Space>
 
 " Make cursor move by visual lines instead of file lines (when wrapping)
 " This makes me feel more at home :)
