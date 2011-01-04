@@ -113,6 +113,11 @@ alias less='less -I'
 # always show all versions of an executable
 #alias which="which -a"
 
+# Path to Virtual Machine Library directory
+VM_LIBRARY="$HOME/Documents/Virtual\ Machines.localized"
+# Start up development VM in nogui mode
+alias noguivm="/Library/Application\ Support/VMware\ Fusion/vmrun -T fusion start $VM_LIBRARY/FreeBSD.vmwarevm/FreeBSD.vmx nogui"
+
 # colors!!!
 ###########
 
