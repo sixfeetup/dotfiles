@@ -111,7 +111,7 @@ alias less='less -I'
 #alias tarbzx='tar -xvjf'
 
 # always show all versions of an executable
-#alias which="which -a"
+#alias whicha="which -a"
 
 # Path to Virtual Machine Library directory
 VM_LIBRARY="$HOME/Documents/Virtual\ Machines.localized"
