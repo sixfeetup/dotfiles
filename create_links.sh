@@ -247,6 +247,7 @@ EOF
 EOF
 ) > "$dot_file"
             fi
+    fi
     }
     
     for dot_file in "${FILES_TO_MAKE[@]}"
