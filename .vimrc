@@ -350,7 +350,7 @@ let g:fuzzy_path_display = 'highlighted_path'
 let g:fuzzy_ignore = "*.png;*.PNG;*.pyc;*.pyo;*.JPG;*.jpg;*.GIF;*.gif;.svn/**;.git/**;*.mo;.DS_Store;.AppleDouble"
 
 " shortcut for ack search
-map <leader>a :Ack<Space>
+map <leader>a :Ack!<Space>
 
 " buffer explorer ctrl + tabbing and single click
 let g:miniBufExplUseSingleClick = 1
