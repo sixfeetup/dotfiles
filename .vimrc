@@ -371,7 +371,7 @@ command! -nargs=0 MarkdownFromHTML  %!pandoc -f html -t markdown "%"
 
 " xml tidy
 command! -complete=file -nargs=* TidyXML %!tidy -xml -i -q -w 0
-map <leader>T :TidyXML<CR>
+map <silent> <leader>T :TidyXML<CR>
 
 " open up the current file's folder in the terminal
 " TODO: Make this work cross platform/terminal program (a plugin perhaps?)
