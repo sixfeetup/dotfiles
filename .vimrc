@@ -65,6 +65,9 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Set the shell to sh, zsh and vim don't seem to play nice
+set shell=sh
+
 " Enhanced command menu ctrl + d to expand directories
 set wildmenu
 " list completions, then cycle through them
