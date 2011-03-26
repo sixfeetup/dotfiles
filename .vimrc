@@ -440,6 +440,9 @@ map <C-l> <C-w>l
 " toggle invisible characters
 noremap <silent> <leader>i :set list!<CR>
 
+" sort versions in a versions.cfg
+map <leader>V /\[versions\]<CR>jVG:g/^#/d<CR>gv:g/^$/d<CR>gv:sort i<CR>
+
 " make the taglist show on the right side
 let Tlist_Use_Right_Window = 1
 " only show the current buffer, fold the rest
