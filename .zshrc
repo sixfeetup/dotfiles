@@ -51,17 +51,20 @@ setopt HIST_SAVE_NO_DUPS HIST_VERIFY HIST_IGNORE_ALL_DUPS EXTENDED_HISTORY
 
 # vi command line editor
 ########################
+# TODO: Un-comment the following line to have vi style keybindings
 #bindkey -v
 # use home and end to go to end and beginning of the line
-#bindkey -M viins '^[[H' vi-beginning-of-line
-#bindkey -M viins '^[[F' vi-end-of-line
+bindkey -M viins '^A' vi-beginning-of-line
+bindkey -M viins '^E' vi-end-of-line
+bindkey -M viins '^[[H' vi-beginning-of-line
+bindkey -M viins '^[[F' vi-end-of-line
 # use ctrl+a and ctrl+e like emacs mode
-#bindkey -M viins '^A' vi-beginning-of-line
-#bindkey -M viins '^E' vi-end-of-line
+bindkey -M viins '^A' vi-beginning-of-line
+bindkey -M viins '^E' vi-end-of-line
 # use delete as forward delete
-#bindkey -M viins '\e[3~' vi-delete-char
+bindkey -M viins '\e[3~' vi-delete-char
 # line buffer
-#bindkey -M viins '^B' push-line-or-edit
+bindkey -M viins '^B' push-line-or-edit
 
 # History settings
 ##################
