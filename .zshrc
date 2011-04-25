@@ -87,6 +87,11 @@ bindkey -M viins "^[OB" down-line-or-search
 bindkey -M viins "^[[B" down-line-or-search
 bindkey -M viins "^P" down-line-or-search
 
+# edit current command in $EDITOR
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # History settings
 ##################
 HISTSIZE=3000
