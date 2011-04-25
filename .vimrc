@@ -456,8 +456,8 @@ map <leader>V /\[versions\]<CR>jVG:g/^#/d<CR>gv:g/^$/d<CR>gv:sort i<CR>
 let Tlist_Use_Right_Window = 1
 " only show the current buffer, fold the rest
 let Tlist_File_Fold_Auto_Close = 1
-" Show the zcml names in the current taglist
-let tlist_xml_settings = 'zcml;n:name'
+" Show the zcml attributes in the current taglist
+let tlist_xml_settings = 'zcml;n:name,g:profile,p:permission,h:handler,m:component,f:factory,c:class,i:id,s:schema'
 " Show buildout section names in the taglist
 let tlist_cfg_settings = 'ini;s:section'
 " mapping for taglist
