@@ -137,8 +137,10 @@ function! s:colorSwitch(...)
 
     " Toggle between a light and dark vim colorscheme
     if &background == 'dark'
+        set background=light
         call ChangeMe(g:light_theme)
     elseif &background == 'light'
+        set background=dark
         call ChangeMe(g:dark_theme)
     endif
 endfunction
