@@ -49,6 +49,12 @@ setopt HIST_SAVE_NO_DUPS HIST_VERIFY HIST_IGNORE_ALL_DUPS EXTENDED_HISTORY
 # globbing
 #setopt GLOB_DOTS
 
+# set up the history-complete-older and newer
+zstyle ':completion:*:history-words' stop yes
+zstyle ':completion:*:history-words' remove-all-dups yes
+zstyle ':completion:*:history-words' list false
+zstyle ':completion:*:history-words' menu yes
+
 # vi command line editor
 ########################
 # TODO: Un-comment the following line to have vi style keybindings
@@ -65,6 +71,21 @@ bindkey -M viins '^E' vi-end-of-line
 bindkey -M viins '\e[3~' vi-delete-char
 # line buffer
 bindkey -M viins '^B' push-line-or-edit
+# change the shortcut for expand alias
+bindkey -M viins '^X' _expand_alias
+# Search backwards with a pattern
+bindkey -M vicmd '^R' history-incremental-pattern-search-backward
+bindkey -M vicmd '^F' history-incremental-pattern-search-forward
+# set up for insert mode too
+bindkey -M viins '^R' history-incremental-pattern-search-backward
+bindkey -M viins '^F' history-incremental-pattern-search-forward
+# complete previous occurences of the command up till now on the command line
+bindkey -M viins "^[OA" up-line-or-search
+bindkey -M viins "^[[A" up-line-or-search
+bindkey -M viins "^N" up-line-or-search
+bindkey -M viins "^[OB" down-line-or-search
+bindkey -M viins "^[[B" down-line-or-search
+bindkey -M viins "^P" down-line-or-search
 
 # History settings
 ##################
