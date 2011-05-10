@@ -190,7 +190,6 @@ EOF
 
     FILES_TO_MAKE=(
         "$HOME"/.pypirc
-        "$HOME"/.pydistutils.cfg
     )
     
     # create some uncontrolled files
@@ -209,17 +208,6 @@ EOF
             fi
         # if the file doesn't exist, let's create it with some content
         elif [ ! -e "$dot_file" ]; then
-
-            # distutils config
-            if [ "$dot_file" = "$HOME/.pydistutils.cfg" ]; then
-                (
-                cat <<EOF
-#[easy_install]
-#find_links =
-#    http://USERNAME:PASSWORD@skillet.sixfeetup.com/simple
-EOF
-) > "$dot_file"
-            fi
 
             # pypirc
             if [ "$dot_file" = "$HOME/.pypirc" ]; then
